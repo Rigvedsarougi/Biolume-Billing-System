@@ -20,31 +20,38 @@ def generate_invoice(customer_name, selected_products):
 
     # Invoice Header
     pdf.set_font("Arial", 'B', 16)
-    pdf.cell(200, 10, company_name, ln=True, align="C")
+    pdf.cell(190, 10, company_name, ln=True, align="C")
     pdf.set_font("Arial", size=12)
-    pdf.multi_cell(200, 10, company_address, align="C")
+    pdf.multi_cell(190, 10, company_address, align="C")
+    pdf.ln(10)
     
     # Customer Details
-    pdf.cell(200, 10, f"Customer Name: {customer_name}", ln=True)
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(100, 10, f"Customer Name: {customer_name}", ln=True)
+    pdf.ln(10)
 
     # Table Header
-    pdf.cell(40, 10, "Product", border=1)
-    pdf.cell(40, 10, "Category", border=1)
-    pdf.cell(40, 10, "Price", border=1)
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(80, 10, "Product", border=1, align='C')
+    pdf.cell(60, 10, "Category", border=1, align='C')
+    pdf.cell(30, 10, "Price", border=1, align='C')
     pdf.ln()
 
     # Product details
+    pdf.set_font("Arial", size=12)
     total_price = 0
     for product in selected_products:
         product_data = biolume_df[biolume_df['Product Name'] == product].iloc[0]
-        pdf.cell(40, 10, product_data['Product Name'], border=1)
-        pdf.cell(40, 10, product_data['Product Category'], border=1)
-        pdf.cell(40, 10, str(product_data['Price']), border=1)
+        pdf.cell(80, 10, product_data['Product Name'], border=1)
+        pdf.cell(60, 10, product_data['Product Category'], border=1)
+        pdf.cell(30, 10, str(product_data['Price']), border=1, align='R')
         total_price += product_data['Price']
         pdf.ln()
 
     # Total price
-    pdf.cell(200, 10, f"Total Price: {total_price}", ln=True, align="R")
+    pdf.ln(10)
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(170, 10, f"Total Price: {total_price} INR", ln=True, align="R")
 
     return pdf
 
