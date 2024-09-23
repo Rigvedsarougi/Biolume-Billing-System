@@ -14,18 +14,28 @@ Gautambuddha Nagar, Uttar Pradesh, 201301
 """
 
 # Create an FPDF instance to generate the PDF
+class PDF(FPDF):
+    def header(self):
+        # Company Name
+        self.set_font("Arial", 'B', 16)
+        self.cell(200, 10, company_name, ln=True, align="C")
+        self.set_font("Arial", size=12)
+        self.multi_cell(200, 10, company_address, align="C")
+        self.ln(10)
+
+    def footer(self):
+        # Footer with page number
+        self.set_y(-15)
+        self.set_font('Arial', 'I', 8)
+        self.cell(0, 10, f'Page {self.page_no()}', 0, 0, 'C')
+        self.cell(0, 10, company_name, 0, 0, 'R')
+
+# Generate Invoice
 def generate_invoice(customer_name, selected_products, quantities):
-    pdf = FPDF()
+    pdf = PDF()
     pdf.add_page()
 
-    # Invoice Header
-    pdf.set_font("Arial", 'B', 16)
-    pdf.cell(190, 10, company_name, ln=True, align="C")
-    pdf.set_font("Arial", size=12)
-    pdf.multi_cell(190, 10, company_address, align="C")
-    pdf.ln(10)
-    
-    # Customer Details
+    # Customer Info Section
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(100, 10, f"Customer Name: {customer_name}", ln=True)
     pdf.ln(10)
@@ -33,10 +43,10 @@ def generate_invoice(customer_name, selected_products, quantities):
     # Table Header
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(30, 10, "Product ID", border=1, align='C')
-    pdf.cell(60, 10, "Product", border=1, align='C')
+    pdf.cell(70, 10, "Product", border=1, align='C')
     pdf.cell(40, 10, "Category", border=1, align='C')
     pdf.cell(20, 10, "Qty", border=1, align='C')
-    pdf.cell(30, 10, "Price", border=1, align='C')
+    pdf.cell(30, 10, "Price (INR)", border=1, align='C')
     pdf.ln()
 
     # Product details
@@ -48,22 +58,23 @@ def generate_invoice(customer_name, selected_products, quantities):
         item_total_price = product_data['Price'] * quantity
         
         pdf.cell(30, 10, product_data['Product ID'], border=1)
-        pdf.cell(60, 10, product_data['Product Name'], border=1)
+        pdf.cell(70, 10, product_data['Product Name'], border=1)
         pdf.cell(40, 10, product_data['Product Category'], border=1)
         pdf.cell(20, 10, str(quantity), border=1, align='C')
         pdf.cell(30, 10, str(item_total_price), border=1, align='R')
         total_price += item_total_price
         pdf.ln()
 
-    # Total price
+    # Total Price
     pdf.ln(10)
     pdf.set_font("Arial", 'B', 12)
-    pdf.cell(170, 10, f"Total Price: {total_price} INR", ln=True, align="R")
+    pdf.cell(160, 10, "Total Price", border=1, align="R")
+    pdf.cell(30, 10, f"{total_price} INR", border=1, align="R")
 
     return pdf
 
 # Streamlit App
-st.title("Invoice Billing System")
+st.title("Professional Invoice Billing System")
 
 # Customer Name input
 customer_name = st.text_input("Enter Customer Name")
