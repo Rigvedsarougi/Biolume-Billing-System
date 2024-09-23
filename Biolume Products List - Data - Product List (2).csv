@@ -1,0 +1,86 @@
+Product ID,Product Category,Product Name,Price,Continue/Discontinue
+B0P0F001,Facial Kit,5 step facial - Micro Detox,250,Continue
+B0P0F002,Facial Kit,5 step facial - Aurum Glow,250,Continue
+B0P0F003,Facial Kit,5 step facial - Radiance Revival,275,Continue
+B0P0F004,Facial Kit,5 step facial - Derma Lumin,275,Continue
+B0P0F005,Facial Kit,5 step facial - Cobalin B12,250,Continue
+B0P0F006,Facial Kit,5 step facial - Mucin Glow,250,Continue
+B0P0F007,Facial Kit,7 Step Facial - Acne Blast,635,Continue
+B0P0F008,Facial Kit,7 Step Facial - Hydra Rich,635,Continue
+B0P0F009,Facial Kit,7 Step Facial - Korean Glow,635,Continue
+B0P0F010,Facial Kit,7 Step Facial - Marine Mud,635,Continue
+B0P0F011,Facial Kit,7 Step Facial - Revital,635,Continue
+B0P0F012,Facial Kit,7 Step Facial - Sea Boost,635,Continue
+B0P0F013,Facial Kit,8 step Premium Facial - Bija Green Tea,910,Discontinue
+B0P0F014,Facial Kit,8 step Premium Facial - Jeju Cherry,910,Discontinue
+B0P0F015,Facial Kit,8 step Premium Facial - Jelly Wine,1050,Discontinue
+B0P0F016,Facial Kit,8 step Premium Facial - Kaolin Aloe,910,Discontinue
+B0P0F017,Facial Kit,8 step Premium Facial - Purple Ginseng,1050,Discontinue
+B0P0F018,Facial Kit,8 step Premium Facial - Snail Mucin,1050,Discontinue
+B0P0F019,Facial Kit,9 step Premium Facial - Bija Green Tea,1050,Continue
+B0P0F020,Facial Kit,9 step Premium Facial - Jeju Cherry,1050,Continue
+B0P0F021,Facial Kit,9 step Premium Facial - Jelly Wine,1165,Continue
+B0P0F022,Facial Kit,9 step Premium Facial - Kaolin Aloe,1050,Continue
+B0P0F023,Facial Kit,9 step Premium Facial - Purple Ginseng,1165,Continue
+B0P0F024,Facial Kit,9 step Premium Facial - Snail Mucin,1165,Continue
+B0P0F025,Facial Kit,4 Step Cleanup - Gold Sheen,199,Continue
+B0P0F026,Facial Kit,4 Step Cleanup - Aqua Splash,199,Continue
+B0P0F027,Facial Kit,4 Step Cleanup - Pearl Wonder,199,Continue
+B0P0F028,Facial Kit,4 Step Cleanup - Acne Heel,199,Continue
+B0P0F029,Facial Kit,4 Step Cleanup - Professional Depigmentation,199,Continue
+B0P0F030,Facial Kit,4 Step Cleanup - Radiat Youth,199,Continue
+B0P0M001,Mani-Pedi Kit,4 Step Pedicure - Lemon Tango,129,Continue
+B0P0M002,Mani-Pedi Kit,4 Step Pedicure - Zero Tan,129,Continue
+B0P0M003,Mani-Pedi Kit,4 Step Pedicure - Hydra Splash,129,Continue
+B0P0M004,Mani-Pedi Kit,4 Step Pedicure - Rosemary mint,129,Continue
+B0P0M005,Mani-Pedi Kit,4 Step Pedicure - Purple Passion,129,Continue
+B0P0M006,Mani-Pedi Kit,4 Step Pedicure - Pumpkin Spice,129,Continue
+B0P0M007,Mani-Pedi Kit,7 step Pedicure - citrus mani pedi,275,Continue
+B0P0M008,Mani-Pedi Kit,7 step Pedicure - sea pearl,275,Continue
+B0P0M009,Mani-Pedi Kit,7 step Pedicure - turkish rose,275,Continue
+B0P0A001,7 Steps Salon Pack,7 Step Salon Pack - Bride to be,2350,Continue
+B0P0A002,7 Steps Salon Pack,7 Step Salon Pack - H2O,2200,Continue
+B0P0A003,7 Steps Salon Pack,7 Step Salon Pack - Pure Skin,2600,Continue
+B0P0A004,7 Steps Salon Pack,7 Step Salon Pack - Time Revesal,2900,Continue
+B0P0B001,Mould Mask,MOLD MASK - 24 K GOLD,340,Continue
+B0P0B002,Mould Mask,MOLD MASK - BERRY BLAST,340,Continue
+B0P0B003,Mould Mask,MOLD MASK - COLLEGEN + ELASTIN,340,Continue
+B0P0B004,Mould Mask,MOLD MASK - KOREAN RICE WATER,340,Continue
+B0P0B005,Mould Mask,MOLD MASK - TEA TREE + ALOE,340,Continue
+B0P0B006,Mould Mask,MOLD MASK - VIT. C + KOJIC,340,Continue
+B0P0S001,Salon Jars Range,De Tan Jar - 300 gms,850,Continue
+B0P0S002,Salon Jars Range,Avocado Massage Cream - 300 gms,650,Continue
+B0P0S003,Salon Jars Range,Avocado Sugar Scrub - 300 gms,950,Continue
+B0P0S004,Salon Jars Range,Avocado Cleansing Lotion - 300 gms,650,Continue
+B0P0S005,Salon Jars Range,Avocado Clay Face Pack - 300 gms,675,Continue
+B0P0S006,Salon Jars Range,Beetroot Gel Scrub - 300 gms,675,Continue
+B0P0S007,Salon Jars Range,Beetroot Gel Cleanser - 300 gms,650,Continue
+B0P0S008,Salon Jars Range,Beetroot Face Pack - 300 gms,675,Continue
+B0P0S009,Salon Jars Range,Beetroot Massage Gel - 300 gms,675,Continue
+B0P0K001,Korean Jar Range,Korean Glow Gel Cleanser - 300 gms,845,Continue
+B0P0K002,Korean Jar Range,Korean Glow Gel Scrub - 300 gms,1125,Continue
+B0P0K003,Korean Jar Range,Korean Glow Face Pack - 300 gms,1075,Continue
+B0P0K004,Korean Jar Range,Korean Glow Massage Gel - 300 gms,1015,Continue
+B0P0K005,Korean Jar Range,Korean Glow Cleansing Lotion - 300 gms,1150,Continue
+B0P0K006,Korean Jar Range,Korean Glow Sugar Scrub - 300 gms,1450,Continue
+B0P0K007,Korean Jar Range,Korean Glow Massage Cream - 300 gms,1550,Continue
+B0P0K008,Korean Jar Range,Korean Glow Clay Face Pack - 300 gms,1475,Continue
+B0P0W001,Advance Lipo Wax,Lipo Wax - Shear - Korean Glow,1200,Continue
+B0P0W002,Advance Lipo Wax,Lipo Wax - Shear - Turmeric,1200,Continue
+B0P0W003,Advance Lipo Wax,Lipo Wax - Shear - Aloe Rose,1100,Continue
+B0P0W004,Advance Lipo Wax,Lipo Wax - Shear - White Chocolate,1100,Continue
+B0P0C001,Cocktail Range,5 step Coctail Pedicure - Americano,395,Continue
+B0P0C002,Cocktail Range,5 step Coctail Pedicure - French 75,395,Continue
+B0P0C003,Cocktail Range,5 step Coctail Pedicure - Mai Tai,395,Continue
+B0P0C004,Cocktail Range,5 step Coctail Pedicure - Palmer,395,Continue
+B0P0C005,Cocktail Range,5 step Coctail Pedicure - Paloma,395,Continue
+B0P0C006,Cocktail Range,5 step Coctail Pedicure - Sangria,395,Continue
+B0P0C007,Cocktail Range,6 step coctail facial - Black Berry,675,Continue
+B0P0C008,Cocktail Range,6 step coctail facial - Gaelic,675,Continue
+B0P0C009,Cocktail Range,6 step coctail facial - Gimlet,675,Continue
+B0P0C010,Cocktail Range,6 step coctail facial - Matcha,675,Continue
+B0P0C011,Cocktail Range,6 step coctail facial - Monarch,675,Continue
+B0P0C012,Cocktail Range,6 step coctail facial - Negroni,675,Continue
+B0P0P001,Body Polishing Kit,Spice & Sugar Body Polishing Kit,1700,Continue
+B0P0H001,Korean Hair Oil,Korean Hair Elixir,425,Continue
+B0P0H002,Korean Hair Oil,Korean Hair Oil,475,Continue
