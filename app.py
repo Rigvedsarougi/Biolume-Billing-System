@@ -48,23 +48,23 @@ def generate_invoice(customer_name, selected_products, quantities):
     pdf.alias_nb_pages()
     pdf.add_page()
 
-    # Current Date
-    current_date = datetime.now().strftime("%d-%m-%Y")
+    # Current Date and Time
+    current_datetime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
     
     # Customer Info Section
     pdf.set_font("Arial", '', 12)
     pdf.cell(100, 10, f"Customer Name: {customer_name}", ln=True)
-    pdf.cell(100, 10, f"Date: {current_date}", ln=True)
+    pdf.cell(100, 10, f"Date: {current_datetime}", ln=True)
     pdf.ln(10)
 
-    # Table Header
+    # Table Header (adjusted column widths)
     pdf.set_fill_color(200, 220, 255)
     pdf.set_font("Arial", 'B', 12)
-    pdf.cell(20, 10, "ID", border=1, align='C', fill=True)
-    pdf.cell(60, 10, "Product", border=1, align='C', fill=True)
+    pdf.cell(25, 10, "ID", border=1, align='C', fill=True)
+    pdf.cell(70, 10, "Product", border=1, align='C', fill=True)
     pdf.cell(40, 10, "Category", border=1, align='C', fill=True)
-    pdf.cell(20, 10, "Qty", border=1, align='C', fill=True)
-    pdf.cell(25, 10, "Unit Price", border=1, align='C', fill=True)
+    pdf.cell(15, 10, "Qty", border=1, align='C', fill=True)
+    pdf.cell(20, 10, "Unit Price", border=1, align='C', fill=True)
     pdf.cell(25, 10, "Total", border=1, align='C', fill=True)
     pdf.ln()
 
@@ -77,11 +77,11 @@ def generate_invoice(customer_name, selected_products, quantities):
         unit_price = product_data['Price']
         item_total_price = unit_price * quantity
         
-        pdf.cell(20, 10, product_data['Product ID'], border=1)
-        pdf.cell(60, 10, product_data['Product Name'], border=1)
+        pdf.cell(25, 10, product_data['Product ID'], border=1)
+        pdf.cell(70, 10, product_data['Product Name'], border=1)  # Increased width for product name
         pdf.cell(40, 10, product_data['Product Category'], border=1)
-        pdf.cell(20, 10, str(quantity), border=1, align='C')
-        pdf.cell(25, 10, f"{unit_price:.2f}", border=1, align='R')
+        pdf.cell(15, 10, str(quantity), border=1, align='C')
+        pdf.cell(20, 10, f"{unit_price:.2f}", border=1, align='R')
         pdf.cell(25, 10, f"{item_total_price:.2f}", border=1, align='R')
         total_price += item_total_price
         pdf.ln()
