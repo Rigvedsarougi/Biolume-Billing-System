@@ -13,7 +13,7 @@ GROUND FLOOR, RAMPAL AWANA COMPLEX,
 INDRA MARKET, SECTOR-27, Atta, Noida,
 Gautambuddha Nagar, Uttar Pradesh, 201301
 """
-company_logo = 'Untitled design (3).png'  # Replace with the path to your company logo image
+company_logo = 'company_logo.png'  # Replace with the path to your company logo image
 
 # Custom PDF class
 class PDF(FPDF):
@@ -48,20 +48,20 @@ def generate_invoice(customer_name, selected_products, quantities):
     pdf.alias_nb_pages()
     pdf.add_page()
 
-    # Current Date and Time
-    current_datetime = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    # Current Date
+    current_date = datetime.now().strftime("%d-%m-%Y")
     
     # Customer Info Section
     pdf.set_font("Arial", '', 12)
     pdf.cell(100, 10, f"Customer Name: {customer_name}", ln=True)
-    pdf.cell(100, 10, f"Date: {current_datetime}", ln=True)
+    pdf.cell(100, 10, f"Date: {current_date}", ln=True)
     pdf.ln(10)
 
     # Table Header (adjusted column widths)
     pdf.set_fill_color(200, 220, 255)
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(25, 10, "ID", border=1, align='C', fill=True)
-    pdf.cell(70, 10, "Product", border=1, align='C', fill=True)
+    pdf.cell(80, 10, "Product", border=1, align='C', fill=True)  # Widened for long product names
     pdf.cell(40, 10, "Category", border=1, align='C', fill=True)
     pdf.cell(15, 10, "Qty", border=1, align='C', fill=True)
     pdf.cell(20, 10, "Unit Price", border=1, align='C', fill=True)
@@ -77,8 +77,9 @@ def generate_invoice(customer_name, selected_products, quantities):
         unit_price = product_data['Price']
         item_total_price = unit_price * quantity
         
+        # Adding cell wrapping for long product names
         pdf.cell(25, 10, product_data['Product ID'], border=1)
-        pdf.cell(70, 10, product_data['Product Name'], border=1)  # Increased width for product name
+        pdf.cell(80, 10, product_data['Product Name'], border=1)  # More space for product names
         pdf.cell(40, 10, product_data['Product Category'], border=1)
         pdf.cell(15, 10, str(quantity), border=1, align='C')
         pdf.cell(20, 10, f"{unit_price:.2f}", border=1, align='R')
