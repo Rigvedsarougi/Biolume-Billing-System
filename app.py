@@ -13,7 +13,7 @@ GROUND FLOOR, RAMPAL AWANA COMPLEX,
 INDRA MARKET, SECTOR-27, Atta, Noida,
 Gautambuddha Nagar, Uttar Pradesh, 201301
 """
-company_logo = 'company_logo.png'  # Replace with the path to your company logo image
+company_logo = 'Untitled design (3).png'  # Replace with the path to your company logo image
 
 # Custom PDF class
 class PDF(FPDF):
