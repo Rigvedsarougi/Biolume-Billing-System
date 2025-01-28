@@ -4,7 +4,7 @@ from fpdf import FPDF
 from datetime import datetime
 
 # Load product data
-biolume_df = pd.read_csv('Biolume Products List - Data - Product List (2).csv')
+biolume_df = pd.read_csv('MKT+Biolume - Inventory System - Invoice.csv')
 
 # Company Details
 company_name = "Biolume Skin Science Pvt Ltd"
