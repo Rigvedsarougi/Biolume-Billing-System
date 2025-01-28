@@ -66,7 +66,7 @@ def generate_invoice(customer_name, gst_number, person_name, contact_number, sel
     pdf.cell(20, 8, "Qty", border=1, align='C', fill=True)
     pdf.cell(25, 8, "Unit Price", border=1, align='C', fill=True)
     pdf.cell(25, 8, "Discount", border=1, align='C', fill=True)
-    pdf.cell(25, 8, "After Disc.", border=1, align='C', fill=True)
+    pdf.cell(25, 8, "Disc Price", border=1, align='C', fill=True)
     pdf.cell(25, 8, "Total", border=1, align='C', fill=True)
     pdf.ln()
 
@@ -77,7 +77,7 @@ def generate_invoice(customer_name, gst_number, person_name, contact_number, sel
         quantity = quantities[idx]
         unit_price = float(product_data['Price'])
         discount = float(product_data['Discount'])
-        after_disc = float(product_data['After Disc.'])
+        after_disc = float(product_data['Disc Price'])
         item_total_price = after_disc * quantity
         
         pdf.cell(20, 8, str(product_data['Product ID']), border=1)
