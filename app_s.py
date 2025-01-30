@@ -135,13 +135,13 @@ gst_number = party_details['GSTIN/UN']
 # Display the address and GSTIN in the form
 col1, col2 = st.columns(2)
 with col1:
-    st.text_input("Enter Customer Name")
+    customer_name = st.text_input("Enter Customer Name")
 with col2:
     st.text_input("Enter GST Number", value=gst_number)
 
 col3, col4 = st.columns(2)
 with col3:
-    st.text_input("Enter Contact Number")
+    contact_number = st.text_input("Enter Contact Number")  # Define this field
 with col4:
     date = datetime.now().strftime("%d-%m-%Y")
     st.text(f"Date: {date}")
@@ -158,8 +158,8 @@ if selected_products:
         quantities.append(qty)
 
 if st.button("Generate Invoice"):
-    if selected_party and selected_products and quantities:
-        pdf = generate_invoice(selected_party, gst_number, contact_number, address, selected_products, quantities)
+    if selected_party and selected_products and quantities and contact_number:
+        pdf = generate_invoice(customer_name, gst_number, contact_number, address, selected_products, quantities)
         pdf_file = f"invoice_{selected_party}_{datetime.now().strftime('%Y%m%d%H%M%S')}.pdf"
         pdf.output(pdf_file)
         with open(pdf_file, "rb") as f:
