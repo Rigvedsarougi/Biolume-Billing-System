@@ -3,8 +3,9 @@ import pandas as pd
 from fpdf import FPDF
 from datetime import datetime
 
-# Load product data
+# Load product data and Party data
 biolume_df = pd.read_csv('MKT+Biolume - Inventory System - Invoice (2).csv')
+party_df = pd.read_csv('MKT+Biolume - Inventory System - Party.csv')
 
 # Company Details
 company_name = "KS Agencies"
@@ -122,20 +123,32 @@ def generate_invoice(customer_name, gst_number, contact_number, address, selecte
 # Streamlit UI
 st.title("Biolume: Billing System")
 
+# Dropdown for selecting Party from CSV
+party_names = party_df['Party'].tolist()
+selected_party = st.selectbox("Select Party", party_names)
+
+# Fetch Party details based on selection
+party_details = party_df[party_df['Party'] == selected_party].iloc[0]
+address = party_details['Address']
+gst_number = party_details['GSTIN/UN']
+
+# Display the address and GSTIN in the form
 col1, col2 = st.columns(2)
 with col1:
-    customer_name = st.text_input("Enter Customer Name")
+    st.text_input("Enter Customer Name")
 with col2:
-    gst_number = st.text_input("Enter GST Number")
+    st.text_input("Enter GST Number", value=gst_number)
 
 col3, col4 = st.columns(2)
 with col3:
-    contact_number = st.text_input("Enter Contact Number")
+    st.text_input("Enter Contact Number")
 with col4:
     date = datetime.now().strftime("%d-%m-%Y")
     st.text(f"Date: {date}")
 
-address = st.text_area("Enter Address")
+# Display the address in the text area
+st.text_area("Address", value=address, height=100)
+
 selected_products = st.multiselect("Select Products", biolume_df['Product Name'].tolist())
 
 quantities = []
@@ -145,9 +158,9 @@ if selected_products:
         quantities.append(qty)
 
 if st.button("Generate Invoice"):
-    if customer_name and gst_number and contact_number and address and selected_products and quantities:
-        pdf = generate_invoice(customer_name, gst_number, contact_number, address, selected_products, quantities)
-        pdf_file = f"invoice_{customer_name}_{datetime.now().strftime('%Y%m%d%H%M%S')}.pdf"
+    if selected_party and selected_products and quantities:
+        pdf = generate_invoice(selected_party, gst_number, contact_number, address, selected_products, quantities)
+        pdf_file = f"invoice_{selected_party}_{datetime.now().strftime('%Y%m%d%H%M%S')}.pdf"
         pdf.output(pdf_file)
         with open(pdf_file, "rb") as f:
             st.download_button("Download Invoice", f, file_name=pdf_file)
