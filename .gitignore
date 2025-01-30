@@ -1,31 +1,5 @@
-# Ignore Python cache files
+generated_invoices/
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
-
-# Ignore virtual environments
-venv/
-.env/
 .venv/
-
-# Ignore Streamlit cache
-.streamlit/
-
-# Ignore system files
-.DS_Store
-Thumbs.db
-
-# Ignore log files
-*.log
-
-# Ignore generated invoices
-generated_invoices/
-
-# Ignore package files
-*.egg-info/
-dist/
-build/
-
-# Ignore Git credentials
-.git-credentials
