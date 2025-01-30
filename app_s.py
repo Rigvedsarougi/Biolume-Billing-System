@@ -48,8 +48,7 @@ class PDF(FPDF):
         self.cell(0, 10, f'Page {self.page_no()}', align='C')
 
 # Generate Invoice
-
-def generate_invoice(customer_name, gst_number, person_name, contact_number, address, selected_products, quantities):
+def generate_invoice(customer_name, gst_number, contact_number, address, selected_products, quantities):
     pdf = PDF()
     pdf.alias_nb_pages()
     pdf.add_page()
@@ -99,9 +98,18 @@ def generate_invoice(customer_name, gst_number, person_name, contact_number, add
         pdf.ln()
 
     pdf.ln(5)
+    tax_rate = 0.18
+    tax_amount = total_price * tax_rate
+
     pdf.set_font("Arial", 'B', 10)
+    pdf.cell(160, 10, "CGST (9%)", border=0, align='R')
+    pdf.cell(30, 10, f"{tax_amount / 2:.2f}", border=1, align='R')
+    pdf.ln()
+    pdf.cell(160, 10, "SGST (9%)", border=0, align='R')
+    pdf.cell(30, 10, f"{tax_amount / 2:.2f}", border=1, align='R')
+    pdf.ln()
     pdf.cell(160, 10, "Grand Total", border=0, align='R')
-    pdf.cell(30, 10, f"{total_price:.2f} INR", border=1, align='R')
+    pdf.cell(30, 10, f"{total_price + tax_amount:.2f} INR", border=1, align='R')
     pdf.ln(20)
 
     return pdf
@@ -133,7 +141,7 @@ if selected_products:
 
 if st.button("Generate Invoice"):
     if customer_name and gst_number and contact_number and address and selected_products and quantities:
-        pdf = generate_invoice(customer_name, gst_number, '', contact_number, address, selected_products, quantities)
+        pdf = generate_invoice(customer_name, gst_number, contact_number, address, selected_products, quantities)
         pdf_file = f"invoice_{customer_name}_{datetime.now().strftime('%Y%m%d%H%M%S')}.pdf"
         pdf.output(pdf_file)
         with open(pdf_file, "rb") as f:
