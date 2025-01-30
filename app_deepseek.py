@@ -115,7 +115,7 @@ def generate_invoice(customer_name, gst_number, person_name, contact_number, sel
     pdf.set_font("Arial", 'I', 10)
     return pdf
 
-st.title("Biolume : Billing System")
+st.title("Biolume Skin Science : Billing System")
 customer_name = st.text_input("Enter Customer Name")
 gst_number = st.text_input("Enter GST Number")
 person_name = st.text_input("Enter Person Name")
