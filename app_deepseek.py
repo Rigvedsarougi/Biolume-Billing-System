@@ -114,7 +114,6 @@ def generate_invoice(customer_name, gst_number, person_name, contact_number, sel
     pdf.ln(20)
 
     pdf.set_font("Arial", 'I', 10)
-    pdf.cell(0, 10, "We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.", ln=True, align='C')
     pdf.cell(0, 10, "This is a Computer Generated Invoice", ln=True, align='C')
 
     return pdf
