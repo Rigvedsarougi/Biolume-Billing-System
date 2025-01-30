@@ -42,7 +42,6 @@ class PDF(FPDF):
         self.set_y(-40)
         self.set_font('Arial', 'I', 8)
         self.multi_cell(0, 5, bank_details, align='C')
-        self.cell(0, 10, 'Thank you for your business!', ln=True, align='C')
         self.cell(0, 10, f'Page {self.page_no()}', align='C')
 
 # Generate Invoice
@@ -114,8 +113,6 @@ def generate_invoice(customer_name, gst_number, person_name, contact_number, sel
     pdf.ln(20)
 
     pdf.set_font("Arial", 'I', 10)
-    pdf.cell(0, 10, "This is a Computer Generated Invoice", ln=True, align='C')
-
     return pdf
 
 st.title("Professional Invoice Billing System")
