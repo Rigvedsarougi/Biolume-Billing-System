@@ -1,4 +1,3 @@
-# Company Details
 COMPANY_NAME = "KS Agencies"
 COMPANY_ADDRESS = """61A/42, Karunanidhi Street, Nehru Nagar,
 West Velachery, Chennai - 600042.
@@ -6,8 +5,8 @@ GSTIN/UIN: 33AAGFK1394P1ZX
 State Name : Tamil Nadu, Code : 33
 """
 
-COMPANY_LOGO = 'Untitled design (3).png'
-PHOTO_LOGO = '10.png'
+COMPANY_LOGO = 'assets/logo.png'
+PHOTO_LOGO = 'assets/photo.png'
 
 BANK_DETAILS = """
 For Rtgs / KS Agencies
