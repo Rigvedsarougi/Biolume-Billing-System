@@ -10,17 +10,18 @@ biolume_df = pd.read_csv('MKT+Biolume - Inventory System - Invoice.csv')
 company_name = "KS Agencies"
 company_address = """61A/42, Karunanidhi Street, Nehru Nagar,
 West Velachery, Chennai - 600042.
-Ph. 9444454461 / 6383775830
 GSTIN/UIN: 33AAGFK1394P1ZX
 State Name : Tamil Nadu, Code : 33
-E-Mail : ksagencies14@gmail.com
 """
 company_logo = 'Untitled design (3).png'
 
 bank_details = """
-Bank Name : Kotak Mahindra Bank (GPay 9444454461)
-A/C No. : 0012490288
-Branch & IFS Code : Velachery & KKBK0000473
+For Rtgs / KS Agencies
+Kotak Mahindra Bank
+Velachery branch
+Ac No 0012490288
+IFSC code KKBK0000473
+Mobile - 9444454461 / GPay / PhonePe / Niyas
 """
 
 # Custom PDF class
@@ -45,14 +46,13 @@ class PDF(FPDF):
         self.cell(0, 10, f'Page {self.page_no()}', align='C')
 
 # Generate Invoice
-def generate_invoice(customer_name, gst_number, address, contact_number, selected_products, quantities):
+def generate_invoice(customer_name, gst_number, person_name, contact_number, selected_products, quantities):
     pdf = PDF()
     pdf.alias_nb_pages()
     pdf.add_page()
     current_date = datetime.now().strftime("%d-%m-%Y")
     pdf.set_font("Arial", '', 10)
     pdf.cell(100, 10, f"Party: {customer_name}", ln=True)
-    pdf.cell(100, 10, f"Address: {address}", ln=True)
     pdf.cell(100, 10, f"GSTIN/UN: {gst_number}", ln=True)
     pdf.cell(100, 10, f"Contact: {contact_number}", ln=True)
     pdf.cell(100, 10, f"Date: {current_date}", ln=True)
@@ -122,7 +122,7 @@ def generate_invoice(customer_name, gst_number, address, contact_number, selecte
 st.title("Professional Invoice Billing System")
 customer_name = st.text_input("Enter Customer Name")
 gst_number = st.text_input("Enter GST Number")
-address = st.text_input("Enter Address")
+person_name = st.text_input("Enter Person Name")
 contact_number = st.text_input("Enter Contact Number")
 selected_products = st.multiselect("Select Products", biolume_df['Product Name'].tolist())
 
@@ -133,8 +133,8 @@ if selected_products:
         quantities.append(qty)
 
 if st.button("Generate Invoice"):
-    if customer_name and gst_number and address and contact_number and selected_products and quantities:
-        pdf = generate_invoice(customer_name, gst_number, address, contact_number, selected_products, quantities)
+    if customer_name and gst_number and person_name and contact_number and selected_products and quantities:
+        pdf = generate_invoice(customer_name, gst_number, person_name, contact_number, selected_products, quantities)
         pdf_file = f"invoice_{customer_name}_{datetime.now().strftime('%Y%m%d%H%M%S')}.pdf"
         pdf.output(pdf_file)
         with open(pdf_file, "rb") as f:
