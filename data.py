@@ -134,7 +134,7 @@ def generate_invoice(customer_name, gst_number, contact_number, address, selecte
 
     # Append the data to the CSV file
     invoice_df = pd.DataFrame([invoice_data])
-    invoice_df.to_csv('invoices.csv', mode='a', header=not pd.io.common.file_exists('invoices.csv'), index=False)
+    invoice_df.to_csv('data/invoices.csv', mode='a', header=not pd.io.common.file_exists('data/invoices.csv'), index=False)
 
     return pdf
 
