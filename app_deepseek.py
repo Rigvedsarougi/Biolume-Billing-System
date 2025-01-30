@@ -14,6 +14,7 @@ GSTIN/UIN: 33AAGFK1394P1ZX
 State Name : Tamil Nadu, Code : 33
 """
 company_logo = 'Untitled design (3).png'
+photo_logo = '10.png'
 
 bank_details = """
 For Rtgs / KS Agencies
@@ -39,9 +40,14 @@ class PDF(FPDF):
         self.ln(5)
 
     def footer(self):
+        # Add bottom left photo
+        if photo_logo:
+            self.image(photo_logo, 10, 265, 33)  # Positioned bottom left
+        
+        # Add bank details in bottom right
         self.set_y(-40)
         self.set_font('Arial', 'I', 8)
-        self.multi_cell(0, 5, bank_details, align='C')
+        self.multi_cell(0, 5, bank_details, align='R')
         self.cell(0, 10, f'Page {self.page_no()}', align='C')
 
 # Generate Invoice
