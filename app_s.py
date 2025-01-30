@@ -132,12 +132,15 @@ party_details = party_df[party_df['Party'] == selected_party].iloc[0]
 address = party_details['Address']
 gst_number = party_details['GSTIN/UN']
 
-# Display the address and GSTIN in the form
+# Customer Name is the same as Party
+customer_name = selected_party
+
+# Display the GSTIN in the form
 col1, col2 = st.columns(2)
 with col1:
-    customer_name = st.text_input("Enter Customer Name")
+    st.text_input("Enter Customer Name", value=customer_name, disabled=True)
 with col2:
-    st.text_input("Enter GST Number", value=gst_number)
+    st.text_input("Enter GST Number", value=gst_number, disabled=True)
 
 col3, col4 = st.columns(2)
 with col3:
