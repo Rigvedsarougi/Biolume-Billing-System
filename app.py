@@ -8,8 +8,7 @@ biolume_df = pd.read_csv('MKT+Biolume - Inventory System - Invoice.csv')
 
 # Company Details
 company_name = "KS Agencies"
-company_address = """
-61A/42, Karunanidhi Street, Nehru Nagar,
+company_address = """61A/42, Karunanidhi Street, Nehru Nagar,
 West Velachery, Chennai - 600042.
 GSTIN/UIN: 33AAGFK1394P1ZX
 State Name : Tamil Nadu, Code : 33
