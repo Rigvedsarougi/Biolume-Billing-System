@@ -14,7 +14,7 @@ GSTIN/UIN: 33AAGFK1394P1ZX
 State Name : Tamil Nadu, Code : 33
 """
 company_logo = 'Untitled design (3).png'
-photo_logo = 'photo.png'
+photo_logo = '11.png'
 
 bank_details = """
 For Rtgs / KS Agencies
