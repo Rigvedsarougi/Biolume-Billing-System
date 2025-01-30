@@ -34,7 +34,7 @@ class PDF(FPDF):
         self.set_font('Arial', '', 10)
         self.multi_cell(0, 5, company_address, align='C')
         self.set_font('Arial', 'B', 14)
-        self.cell(0, 10, 'TAX INVOICE', ln=True, align='C')
+        self.cell(0, 10, 'Proforma Invoice', ln=True, align='C')
         self.line(10, 50, 200, 50)
         self.ln(5)
 
