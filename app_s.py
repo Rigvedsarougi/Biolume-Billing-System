@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import os
 from fpdf import FPDF
 from datetime import datetime
 
@@ -15,6 +14,7 @@ GSTIN/UIN: 33AAGFK1394P1ZX
 State Name : Tamil Nadu, Code : 33
 """
 company_logo = 'Untitled design (3).png'
+photo_logo = 'photo.png'
 
 bank_details = """
 For Rtgs / KS Agencies
@@ -40,9 +40,14 @@ class PDF(FPDF):
         self.ln(5)
 
     def footer(self):
+        # Add bottom left photo
+        if photo_logo:
+            self.image(photo_logo, 10, 265, 33)  # Positioned bottom left
+        
+        # Add bank details in bottom right
         self.set_y(-40)
         self.set_font('Arial', 'I', 8)
-        self.multi_cell(0, 5, bank_details, align='C')
+        self.multi_cell(0, 5, bank_details, align='R')
         self.cell(0, 10, f'Page {self.page_no()}', align='C')
 
 # Generate Invoice
@@ -91,40 +96,50 @@ def generate_invoice(customer_name, gst_number, person_name, contact_number, sel
         total_price += item_total_price
         pdf.ln()
 
+    pdf.ln(5)
+    pdf.set_font("Arial", 'B', 10)
+    pdf.cell(160, 10, "Subtotal", border=0, align='R')
+    pdf.cell(30, 10, f"{total_price:.2f}", border=1, align='R')
+    pdf.ln()
+
     tax_rate = 0.18
     tax_amount = total_price * tax_rate
     grand_total = total_price + tax_amount
-    
-    pdf.ln(5)
-    pdf.set_font("Arial", 'B', 10)
+
+    pdf.cell(160, 10, "CGST (9%)", border=0, align='R')
+    pdf.cell(30, 10, f"{tax_amount / 2:.2f}", border=1, align='R')
+    pdf.ln()
+
+    pdf.cell(160, 10, "SGST (9%)", border=0, align='R')
+    pdf.cell(30, 10, f"{tax_amount / 2:.2f}", border=1, align='R')
+    pdf.ln()
+
     pdf.cell(160, 10, "Grand Total", border=0, align='R')
     pdf.cell(30, 10, f"{grand_total:.2f} INR", border=1, align='R')
     pdf.ln(20)
 
-    return pdf, grand_total
+    pdf.set_font("Arial", 'I', 10)
+    return pdf
 
-st.title("Professional Invoice Billing System")
+st.title("Biolume: Billing System")
 customer_name = st.text_input("Enter Customer Name")
 gst_number = st.text_input("Enter GST Number")
 person_name = st.text_input("Enter Person Name")
 contact_number = st.text_input("Enter Contact Number")
 selected_products = st.multiselect("Select Products", biolume_df['Product Name'].tolist())
 
-quantities = [st.number_input(f"Quantity for {product}", min_value=1, value=1, step=1) for product in selected_products]
+quantities = []
+if selected_products:
+    for product in selected_products:
+        qty = st.number_input(f"Quantity for {product}", min_value=1, value=1, step=1)
+        quantities.append(qty)
 
 if st.button("Generate Invoice"):
     if customer_name and gst_number and person_name and contact_number and selected_products and quantities:
-        pdf, grand_total = generate_invoice(customer_name, gst_number, person_name, contact_number, selected_products, quantities)
-        os.makedirs("generated_invoices", exist_ok=True)
-        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-        pdf_filename = f"generated_invoices/invoice_{customer_name}_{timestamp}.pdf"
-        pdf.output(pdf_filename)
-        
-        invoice_data = pd.DataFrame([[datetime.now(), customer_name, gst_number, person_name, contact_number, ", ".join(selected_products), ", ".join(map(str, quantities)), f"{grand_total:.2f} INR", pdf_filename]])
-        invoice_data.to_csv("invoices_data.csv", mode='a', header=not os.path.isfile("invoices_data.csv"), index=False)
-        
-        with open(pdf_filename, "rb") as f:
-            st.download_button("Download Invoice", f, file_name=os.path.basename(pdf_filename))
-        st.success("Invoice generated and stored successfully!")
+        pdf = generate_invoice(customer_name, gst_number, person_name, contact_number, selected_products, quantities)
+        pdf_file = f"invoice_{customer_name}_{datetime.now().strftime('%Y%m%d%H%M%S')}.pdf"
+        pdf.output(pdf_file)
+        with open(pdf_file, "rb") as f:
+            st.download_button("Download Invoice", f, file_name=pdf_file)
     else:
         st.error("Please fill all fields and select products.")
