@@ -1,0 +1,28 @@
+name: Save Invoices to GitHub
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/invoices.csv'  # Only trigger this when the CSV file is updated
+  workflow_dispatch:  # Allows you to manually trigger this action
+
+jobs:
+  commit-invoices:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+
+    - name: Set up Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "your-email@example.com"
+
+    - name: Add and commit invoices.csv
+      run: |
+        git add data/invoices.csv
+        git commit -m "Update invoices.csv"
+        git push origin main
