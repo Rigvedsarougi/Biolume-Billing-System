@@ -59,9 +59,14 @@ def generate_invoice(customer_name, gst_number, contact_number, address, selecte
     pdf.cell(90, 10, f"Date: {current_date}", ln=True, align='R')
     pdf.cell(100, 10, f"GSTIN/UN: {gst_number}")
     pdf.cell(90, 10, f"Contact: {contact_number}", ln=True, align='R')
-    pdf.cell(100, 10, f"Address: {address}", ln=True)
+    
+    # Use multi_cell for address to handle text wrapping
+    pdf.cell(100, 10, "Address: ", ln=True)
+    pdf.set_font("Arial", '', 9)
+    pdf.multi_cell(0, 10, address)  # Ensures the address fits within the page
+    
     pdf.ln(10)
-
+    
     # Table header
     pdf.set_fill_color(200, 220, 255)
     pdf.set_font("Arial", 'B', 9)
