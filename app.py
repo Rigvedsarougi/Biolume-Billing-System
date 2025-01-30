@@ -7,11 +7,12 @@ from datetime import datetime
 biolume_df = pd.read_csv('MKT+Biolume - Inventory System - Invoice.csv')
 
 # Company Details
-company_name = "Biolume Skin Science Pvt Ltd"
+company_name = "KS Agencies"
 company_address = """
-GROUND FLOOR, RAMPAL AWANA COMPLEX,
-INDRA MARKET, SECTOR-27, Atta, Noida,
-Gautambuddha Nagar, Uttar Pradesh, 201301
+61A/42, Karunanidhi Street, Nehru Nagar,
+West Velachery, Chennai - 600042.
+GSTIN/UIN: 33AAGFK1394P1ZX
+State Name : Tamil Nadu, Code : 33
 """
 company_logo = 'Untitled design (3).png'
 
