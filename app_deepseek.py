@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import math
 from fpdf import FPDF
 from datetime import datetime
 
@@ -61,14 +62,12 @@ def generate_invoice(customer_name, gst_number, contact_number, address, selecte
     pdf.cell(100, 10, f"GSTIN/UN: {gst_number}")
     pdf.cell(90, 10, f"Contact: {contact_number}", ln=True, align='R')
     
-    # Use multi_cell for address to handle text wrapping
     pdf.cell(100, 10, "Address: ", ln=True)
     pdf.set_font("Arial", '', 9)
-    pdf.multi_cell(0, 10, address)  # Ensures the address fits within the page
+    pdf.multi_cell(0, 10, address)
     
     pdf.ln(10)
     
-    # Table header
     pdf.set_fill_color(200, 220, 255)
     pdf.set_font("Arial", 'B', 9)
     pdf.cell(10, 8, "S.No", border=1, align='C', fill=True)
@@ -80,8 +79,7 @@ def generate_invoice(customer_name, gst_number, contact_number, address, selecte
     pdf.cell(20, 8, "Disc. %", border=1, align='C', fill=True)
     pdf.cell(20, 8, "Amount", border=1, align='C', fill=True)
     pdf.ln()
-
-    # Table data
+    
     pdf.set_font("Arial", '', 9)
     total_price = 0
     for idx, product in enumerate(selected_products):
@@ -106,6 +104,7 @@ def generate_invoice(customer_name, gst_number, contact_number, address, selecte
     pdf.ln(5)
     tax_rate = 0.18
     tax_amount = total_price * tax_rate
+    grand_total = math.ceil(total_price + tax_amount)
 
     pdf.set_font("Arial", 'B', 10)
     pdf.cell(160, 10, "CGST (9%)", border=0, align='R')
@@ -115,9 +114,9 @@ def generate_invoice(customer_name, gst_number, contact_number, address, selecte
     pdf.cell(30, 10, f"{tax_amount / 2:.2f}", border=1, align='R')
     pdf.ln()
     pdf.cell(160, 10, "Grand Total", border=0, align='R')
-    pdf.cell(30, 10, f"{total_price + tax_amount:.2f} INR", border=1, align='R')
+    pdf.cell(30, 10, f"{grand_total} INR", border=1, align='R')
     pdf.ln(20)
-
+    
     return pdf
 
 # Streamlit UI
