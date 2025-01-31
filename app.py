@@ -115,7 +115,7 @@ def generate_invoice(customer_name, gst_number, contact_number, address, selecte
     pdf.cell(30, 10, f"{tax_amount / 2:.2f}", border=1, align='R')
     pdf.ln()
     pdf.cell(160, 10, "Grand Total", border=0, align='R')
-    pdf.cell(30, 10, f"{total_price + tax_amount:.2f} INR", border=1, align='R')
+    pdf.cell(30, 10, f"{round(total_price + tax_amount):.2f} INR", border=1, align='R')
     pdf.ln(20)
 
     return pdf
