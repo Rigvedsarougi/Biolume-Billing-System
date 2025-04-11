@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Load product data and Party data
 biolume_df = pd.read_csv('MKT+Biolume - Inventory System - Invoice (2).csv')
-party_df = pd.read_csv('MKT+Biolume - Inventory System - Party.csv')
+party_df = pd.read_csv('MKT+Biolume - Inventory System - Party (2).csv')
 
 # Company Details
 company_name = "KS Agencies"
@@ -23,7 +23,7 @@ For Rtgs / KS Agencies
 Kotak Mahindra Bank Velachery branch
 Ac No 0012490288, IFSC code KKBK0000473 
 Mobile - 9444454461 / GPay / PhonePe / Niyas
-Delivery/Payment Support: +919094041611
+Delivery/Payment Support: +916383775830
 Customer Support: +919311662808
 """
 
